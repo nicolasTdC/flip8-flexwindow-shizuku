@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:name=".ProofApplication"
+        android:allowBackup="false"
+        android:label="Flip8 FlexWindow"
+        android:theme="@android:style/Theme.Material.NoActionBar"
+        android:usesCleartextTraffic="false">
+
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+        <activity
+            android:name=".ControllerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ProofActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|density"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":proof"
+            android:resizeableActivity="true"
+            android:taskAffinity="com.ameprobe.flexshizuku.proof"
+            android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen" />
+
+        <receiver
+            android:name=".ProofStopReceiver"
+            android:exported="true"
+            android:process=":proof">
+            <intent-filter>
+                <action android:name="com.ameprobe.flexshizuku.STOP_PROOF" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
