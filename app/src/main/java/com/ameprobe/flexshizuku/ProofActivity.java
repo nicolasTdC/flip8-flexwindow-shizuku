@@ -12,7 +12,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.view.Surface;
 import android.view.TextureView;
@@ -36,7 +35,9 @@ public final class ProofActivity extends Activity {
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
         current = new WeakReference<>(this);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        // Let the FlexWindow follow the user's normal One UI inactivity
+        // timeout. The controller restores the activity after a normal wake
+        // and unlock, rather than holding a screen wake lock indefinitely.
         getWindow().setStatusBarColor(Color.BLACK);
         getWindow().setNavigationBarColor(Color.BLACK);
         getWindow().setDecorFitsSystemWindows(false);
