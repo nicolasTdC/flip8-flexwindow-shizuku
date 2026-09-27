@@ -31,6 +31,9 @@ models or One UI releases.
   the animation when the phone becomes eligible again.
 - Provides a manual **Stop and restore** action and restores Samsung's normal
   state after errors or Shizuku loss.
+- Lets you import a video, animated GIF, or animated WebP from Android's file
+  picker. The app keeps its own private copy, so playback does not depend on
+  the original file remaining in Downloads or on USB being connected.
 
 ## Requirements
 
@@ -43,6 +46,16 @@ Shizuku must be started again after every phone reboot. After Shizuku is
 running, USB is not required.
 
 ## Use your own animation
+
+Open **Flip8 FlexWindow**, tap **Choose video or GIF**, and select a video,
+animated GIF, or animated WebP. If the controller is already active, tap
+**Stop and restore**, then **Start FlexWindow** to load the new media.
+
+Tap **Use bundled animation** to return to the included example. No storage
+permission is required because Android's system picker grants access only to
+the file you choose.
+
+For a custom build, you can still replace the bundled fallback at:
 
 Replace:
 
